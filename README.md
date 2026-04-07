@@ -146,7 +146,9 @@ ToolbarSearchPanel toolbarSearchPanel = new ToolbarSearchPanel(toolbarSearchList
 <h2 align="center">Tools</h2>
 <h3 align="left">1- Package Initializer</h3>
 
-![Package Initializer]<img width="706" height="527" alt="image" src="https://github.com/user-attachments/assets/cb20bc40-a015-4131-95e6-2176fd81b8d3" />
+![Uploading image.png…]()
+
+![Package Initializer](https://github.com/user-attachments/assets/cb20bc40-a015-4131-95e6-2176fd81b8d3.png)
 
 
 <p>Package Initializer can be used to install/remove built-in, git and asset store packages based on the toggles in the editor tool settings. For safety reasons, Asset Store packages will not be removed.<br>
