@@ -302,29 +302,23 @@ namespace CodeDestroyer.Editor.EditorTools
                 if (!PackageInitializerSave.instance.isPackageInitializerEnabled) return;
             }
 
-
-            if (!SessionState.GetBool("isPackageInitializerAlreadyInitialized", false))
+            if (PackageInitializerSave.instance != null)
             {
-                SessionState.SetBool("isPackageInitializerAlreadyInitialized", true);
+                char sepChar = Path.DirectorySeparatorChar;
+                string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
+                string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
 
-                if (PackageInitializerSave.instance != null)
+                if (!Directory.Exists(folder))
                 {
-                    char sepChar = Path.DirectorySeparatorChar;
-                    string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
-                    string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
+                    Directory.CreateDirectory(folder);
+                }
 
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-
-                    if (!File.Exists(path))
-                    {
-                        // Run
-                        ListInstalledPackages();
-                        File.WriteAllText(path, "Saved!");
-                        // Run
-                    }
+                if (!File.Exists(path))
+                {
+                    // Run
+                    ListInstalledPackages();
+                    File.WriteAllText(path, "Saved!");
+                    // Run
                 }
             }
         }
