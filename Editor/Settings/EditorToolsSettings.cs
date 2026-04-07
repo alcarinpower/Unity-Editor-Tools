@@ -2,7 +2,11 @@
 using CodeDestroyer.Editor.UIElements;
 using System.Collections.Generic;
 using UnityEditor;
+
+#if HAS_SPRITE2D
 using UnityEditor.U2D.Sprites;
+#endif
+
 using UnityEngine;
 using UnityEngine.UIElements;
 
