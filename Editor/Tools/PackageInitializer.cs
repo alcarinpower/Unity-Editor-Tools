@@ -305,18 +305,10 @@ namespace CodeDestroyer.Editor.EditorTools
                 string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
                 string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
 
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
-
-                if (!File.Exists(path))
-                {
-                    // Run
-                    ListInstalledPackages();
-                    File.WriteAllText(path, "Saved!");
-                    // Run
-                }
+                // Run
+                ListInstalledPackages();
+                File.WriteAllText(path, "Saved!");
+                // Run
             }
         }
         internal static VisualElement PackageInitializerVisualElement()
