@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
-namespace CompilerDestroyer.Editor.EditorTools
+namespace CodeDestroyer.Editor.EditorTools
 {
     public sealed class GitDependencyManager
     {

@@ -6,10 +6,10 @@ using UnityEditor.PackageManager;
 using UnityEditor;
 using System.Linq;
 using System.IO;
-using CompilerDestroyer.Editor.UIElements;
+using CodeDestroyer.Editor.UIElements;
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
-namespace CompilerDestroyer.Editor.EditorTools
+namespace CodeDestroyer.Editor.EditorTools
 {
     internal sealed class PackageInitializer
     {

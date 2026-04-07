@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using CompilerDestroyer.Editor.UIElements;
+using CodeDestroyer.Editor.UIElements;
 
-namespace CompilerDestroyer.Editor.EditorTools
+namespace CodeDestroyer.Editor.EditorTools
 {
     internal sealed class ToolsDocumentation
     {

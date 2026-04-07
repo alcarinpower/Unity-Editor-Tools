@@ -1,11 +1,11 @@
-﻿using CompilerDestroyer.Editor.EditorTools;
-using CompilerDestroyer.Editor.UIElements;
+﻿using CodeDestroyer.Editor.EditorTools;
+using CodeDestroyer.Editor.UIElements;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace CompilerDestroyer.Editor.ToolsManager
+namespace CodeDestroyer.Editor.ToolsManager
 {
     internal sealed class EditorToolsSettings : EditorWindow
     {
@@ -14,7 +14,7 @@ namespace CompilerDestroyer.Editor.ToolsManager
         private List<TreeViewItemData<string>> projectSettingsList = new List<TreeViewItemData<string>>();
         private Dictionary<string, VisualElement> rootDict = new Dictionary<string, VisualElement>();
 
-        [MenuItem("Tools/Compiler Destroyer/Editor Tools")]
+        [MenuItem("Tools/Code Destroyer/Editor Tools")]
         private static void ShowWindow()
         {
             EditorToolsSettings settingsWindow = GetWindow<EditorToolsSettings>();

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 
-namespace CompilerDestroyer.Editor.EditorTools
+namespace CodeDestroyer.Editor.EditorTools
 {
 
     [FilePath(GlobalVariables.PackageName + "/packageinitializersave.binary", FilePathAttribute.Location.PreferencesFolder)]

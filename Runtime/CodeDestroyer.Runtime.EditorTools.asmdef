@@ -1,5 +1,5 @@
 {
-    "name": "CompilerDestroyer.Runtime.EditorTools",
+    "name": "CodeDestroyer.Runtime.EditorTools",
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [],

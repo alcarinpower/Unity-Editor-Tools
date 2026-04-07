@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 
-namespace CompilerDestroyer.Editor.UIElements
+namespace CodeDestroyer.Editor.UIElements
 {
     /// <summary>
     /// Exact same UIElement with ToolbarSearchField but search algorithm implemented.

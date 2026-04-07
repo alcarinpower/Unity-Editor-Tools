@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace CompilerDestroyer.Editor.UIElements
+namespace CodeDestroyer.Editor.UIElements
 {
     /// <summary>
     /// Basic header.

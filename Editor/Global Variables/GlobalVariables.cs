@@ -4,15 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("CompilerDestroyer.Editor.UIElements"), InternalsVisibleTo("CompilerDestroyer.Editor.EditorTools")]
-namespace CompilerDestroyer.Editor
+[assembly: InternalsVisibleTo("CodeDestroyer.Editor.UIElements"), InternalsVisibleTo("CodeDestroyer.Editor.EditorTools"), InternalsVisibleTo("CodeDestroyer.Editor.SpriteTools")]
+namespace CodeDestroyer.Editor
 {
     internal static class GlobalVariables
     {
         // Project Paths
-        internal const string NickName = "Compiler Destroyer";
+        internal const string NickName = "Code Destroyer";
         internal const string ProjectName = "Editor Tools";
-        internal const string DomainName = "com.compilerdestroyer";
+        internal const string DomainName = "com.codedestroyer";
         internal const string PackageName = DomainName + ".editortools";
         internal const string ProjectsPath = "Packages/" + PackageName + "/Editor/Projects";
         internal const string ProjectManagementPath = "Packages/" + PackageName + "/Editor/Project Managements";

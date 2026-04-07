@@ -1,11 +1,13 @@
-using System;
+#if HAS_SPRITE2D
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace CompilerDestroyer.Editor.EditorTools
+[assembly: InternalsVisibleTo("CodeDestroyer.Editor.EditorTools")]
+namespace CodeDestroyer.Editor.EditorTools
 {
     internal sealed class SpriteEditor
     {
@@ -270,3 +272,4 @@ namespace CompilerDestroyer.Editor.EditorTools
 
     }
 }
+#endif

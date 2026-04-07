@@ -1,9 +1,9 @@
 ﻿using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-using CompilerDestroyer.Runtime.Attributes;
+using CodeDestroyer.Runtime.Attributes;
 
-namespace CompilerDestroyer.Editor.Attributes
+namespace CodeDestroyer.Editor.Attributes
 {
     /// <summary>
     /// Custom UIElements PropertyDrawer for ReadOnlyAttribute.
