@@ -2,6 +2,6 @@
   "name": "com.codedestroyer.unityeditortools",
   "version": "1.0.0",
   "displayName": "Unity Editor Tools",
-  "description": "This package has various unity editor tools",
+  "description": "This package has various unity editor tools.",
   "unity": "6000.0"
 }
