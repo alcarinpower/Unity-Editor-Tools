@@ -10,10 +10,11 @@ namespace CodeDestroyer.Editor.EditorTools
     [FilePath(GlobalVariables.PackageName + "/packageinitializersave.binary", FilePathAttribute.Location.PreferencesFolder)]
     internal sealed class PackageInitializerSave : ScriptableSingleton<PackageInitializerSave>
     {
-        [SerializeField] internal bool isPackageInitializerEnabled = true;
+        [SerializeField] internal bool isPackageInitializerEnabled = false;
         [SerializeField] internal List<Package> builtInPackages = new List<Package>();
         [SerializeField] internal List<Package> customPackages = new List<Package>();
         [SerializeField] internal List<Package> assetStorePackages = new List<Package>();
+
 
         internal void Save()
         {

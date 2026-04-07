@@ -120,40 +120,6 @@ namespace CodeDestroyer.Editor.EditorTools
         private static ListView assetStorePackagesListView;
 
 
-        [InitializeOnLoadMethod]
-        private static void InitializePackage()
-        {
-            if (PackageInitializerSave.instance != null)
-            {
-                if (!PackageInitializerSave.instance.isPackageInitializerEnabled) return;
-            }
-
-
-            if (!SessionState.GetBool("isPackageInitializerAlreadyInitialized", false))
-            {
-                SessionState.SetBool("isPackageInitializerAlreadyInitialized", true);
-                
-                if (PackageInitializerSave.instance != null)
-                {
-                    char sepChar = Path.DirectorySeparatorChar;
-                    string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
-                    string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
-
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-
-                    if (!File.Exists(path))
-                    {
-                        // Run
-                        ListInstalledPackages();
-                        File.WriteAllText(path, "Saved!");
-                        // Run
-                    }
-                }
-            }
-        }
         private static void UpdateProjectPackagesAccordingToPackageInitializer()
         {
             List<string> addList = new List<string>();
@@ -328,6 +294,40 @@ namespace CodeDestroyer.Editor.EditorTools
                 AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
             }
         }
+
+        private static void ApplyChanges()
+        {
+            if (PackageInitializerSave.instance != null)
+            {
+                if (!PackageInitializerSave.instance.isPackageInitializerEnabled) return;
+            }
+
+
+            if (!SessionState.GetBool("isPackageInitializerAlreadyInitialized", false))
+            {
+                SessionState.SetBool("isPackageInitializerAlreadyInitialized", true);
+
+                if (PackageInitializerSave.instance != null)
+                {
+                    char sepChar = Path.DirectorySeparatorChar;
+                    string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
+                    string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
+
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+
+                    if (!File.Exists(path))
+                    {
+                        // Run
+                        ListInstalledPackages();
+                        File.WriteAllText(path, "Saved!");
+                        // Run
+                    }
+                }
+            }
+        }
         internal static VisualElement PackageInitializerVisualElement()
         {
             VisualElement rootVisualElement = new VisualElement();
@@ -350,8 +350,7 @@ namespace CodeDestroyer.Editor.EditorTools
 
             Toggle disablePackageInitializer = new Toggle();
             disablePackageInitializer.style.alignSelf = Align.FlexEnd;
-
-            disablePackageInitializer.value = true;
+            disablePackageInitializer.value = PackageInitializerSave.instance.isPackageInitializerEnabled;
 
             VisualElement savePathContainer = new VisualElement();
             savePathContainer.style.flexDirection = FlexDirection.Row;
@@ -376,13 +375,16 @@ namespace CodeDestroyer.Editor.EditorTools
 
 
             WholePackageInitializerContainer = new VisualElement();
+            WholePackageInitializerContainer.SetEnabled(disablePackageInitializer.value);
+
             disablePackageInitializer.RegisterCallback<ChangeEvent<bool>>(evt =>
             {
                 Undo.RegisterCompleteObjectUndo(PackageInitializerSave.instance, "Toggle Package Initializer");
-
-                WholePackageInitializerContainer.SetEnabled(disablePackageInitializer.value);
-                PackageInitializerSave.instance.isPackageInitializerEnabled = disablePackageInitializer.value;
+                disablePackageInitializer.value = evt.newValue;
+                WholePackageInitializerContainer.SetEnabled(evt.newValue);
+                PackageInitializerSave.instance.isPackageInitializerEnabled = evt.newValue;
                 PackageInitializerSave.instance.Save();
+
             });
 
             Undo.undoRedoPerformed += () =>
@@ -457,6 +459,18 @@ namespace CodeDestroyer.Editor.EditorTools
                 }
             };
 
+            Button applyButton = new Button();
+            applyButton.text = "Apply";
+            applyButton.style.marginLeft = globalMarginLeftRight;
+            applyButton.style.marginRight = globalMarginLeftRight;
+            applyButton.style.marginBottom = globalMiniBottomMargin;
+            applyButton.clicked += () =>
+            {
+                if (EditorUtility.DisplayDialog("Apply Changes", "This will install every selected packages and remove every deselected packages.", "Apply", "Cancel"))
+                {
+                    ApplyChanges();
+                }
+            };
 
 
             rootVisualElement.Add(spacer);
@@ -468,6 +482,7 @@ namespace CodeDestroyer.Editor.EditorTools
             WholePackageInitializerContainer.Add(savePathContainer);
             WholePackageInitializerContainer.Add(updateButton);
             WholePackageInitializerContainer.Add(resetButton);
+            WholePackageInitializerContainer.Add(applyButton);
             WholePackageInitializerContainer.Add(builtInPackageList);
             WholePackageInitializerContainer.Add(customPackageList);
             WholePackageInitializerContainer.Add(assetStorePackageList);
