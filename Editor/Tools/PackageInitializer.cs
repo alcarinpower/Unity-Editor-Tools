@@ -41,20 +41,39 @@ namespace CodeDestroyer.Editor.EditorTools
             "com.unity.rendering.light-transport",
             "com.unity.render-pipelines.universal-config"
         };
-        private static readonly List<string> resetBuiltInList = new List<string>()
+        private static readonly List<string> _2DUrpList = new List<string>()
         {
-            "com.unity.ai.navigation",
+            "com.unity.2d.animation",
+            "com.unity.2d.aseprite",
+            "com.unity.2d.common",
+            "com.unity.2d.psdimporter",
+            "com.unity.2d.sprite",
+            "com.unity.2d.spriteshape",
+            "com.unity.2d.tilemap",
+            "com.unity.2d.tilemap.extras",
+            "com.unity.2d.tooling",
+            "com.unity.burst",
+            "com.unity.collections",
+            "com.unity.ext.nunit",
             "com.unity.inputsystem",
             "com.unity.ide.rider",
+            "com.unity.mathematics",
+            "com.unity.nuget.mono-cecil",
             "com.unity.multiplayer.center",
+            "com.unity.test-framework.performance",
+            "com.unity.render-pipelines.core",
+            "com.unity.searcher",
+            "com.unity.shadergraph",
             "com.unity.test-framework",
             "com.unity.timeline",
             "com.unity.ugui",
-            "com.unity.render-pipelines.universal",
             "com.unity.collab-proxy",
+            "com.unity.render-pipelines.universal",
+            "com.unity.render-pipelines.universal-config",
             "com.unity.visualscripting",
             "com.unity.ide.visualstudio",
             "com.unity.modules.accessibility",
+            "com.unity.modules.adaptiveperformance",
             "com.unity.modules.ai",
             "com.unity.modules.androidjni",
             "com.unity.modules.animation",
@@ -62,6 +81,7 @@ namespace CodeDestroyer.Editor.EditorTools
             "com.unity.modules.audio",
             "com.unity.modules.cloth",
             "com.unity.modules.director",
+            "com.unity.modules.hierarchycore",
             "com.unity.modules.imageconversion",
             "com.unity.modules.imgui",
             "com.unity.modules.jsonserialize",
@@ -69,6 +89,7 @@ namespace CodeDestroyer.Editor.EditorTools
             "com.unity.modules.physics",
             "com.unity.modules.physics2d",
             "com.unity.modules.screencapture",
+            "com.unity.modules.subsystems",
             "com.unity.modules.terrain",
             "com.unity.modules.terrainphysics",
             "com.unity.modules.tilemap",
@@ -81,6 +102,68 @@ namespace CodeDestroyer.Editor.EditorTools
             "com.unity.modules.unitywebrequestaudio",
             "com.unity.modules.unitywebrequesttexture",
             "com.unity.modules.unitywebrequestwww",
+            "com.unity.modules.vectorgraphics",
+            "com.unity.modules.vehicles",
+            "com.unity.modules.video",
+            "com.unity.modules.vr",
+            "com.unity.modules.wind",
+            "com.unity.modules.xr"
+        };
+
+        private static readonly List<string> _3DUrpList = new List<string>()
+        {
+            "com.unity.ai.navigation",
+            "com.unity.burst",
+            "com.unity.collections",
+            "com.unity.ext.nunit",
+            "com.unity.inputsystem",
+            "com.unity.ide.rider",
+            "com.unity.mathematics",
+            "com.unity.nuget.mono-cecil",
+            "com.unity.multiplayer.center",
+            "com.unity.test-framework.performance",
+            "com.unity.render-pipelines.core",
+            "com.unity.searcher",
+            "com.unity.shadergraph",
+            "com.unity.test-framework",
+            "com.unity.timeline",
+            "com.unity.ugui",
+            "com.unity.collab-proxy",
+            "com.unity.render-pipelines.universal",
+            "com.unity.render-pipelines.universal-config",
+            "com.unity.visualscripting",
+            "com.unity.ide.visualstudio",
+            "com.unity.modules.accessibility",
+            "com.unity.modules.adaptiveperformance",
+            "com.unity.modules.ai",
+            "com.unity.modules.androidjni",
+            "com.unity.modules.animation",
+            "com.unity.modules.assetbundle",
+            "com.unity.modules.audio",
+            "com.unity.modules.cloth",
+            "com.unity.modules.director",
+            "com.unity.modules.hierarchycore",
+            "com.unity.modules.imageconversion",
+            "com.unity.modules.imgui",
+            "com.unity.modules.jsonserialize",
+            "com.unity.modules.particlesystem",
+            "com.unity.modules.physics",
+            "com.unity.modules.physics2d",
+            "com.unity.modules.screencapture",
+            "com.unity.modules.subsystems",
+            "com.unity.modules.terrain",
+            "com.unity.modules.terrainphysics",
+            "com.unity.modules.tilemap",
+            "com.unity.modules.ui",
+            "com.unity.modules.uielements",
+            "com.unity.modules.umbra",
+            "com.unity.modules.unityanalytics",
+            "com.unity.modules.unitywebrequest",
+            "com.unity.modules.unitywebrequestassetbundle",
+            "com.unity.modules.unitywebrequestaudio",
+            "com.unity.modules.unitywebrequesttexture",
+            "com.unity.modules.unitywebrequestwww",
+            "com.unity.modules.vectorgraphics",
             "com.unity.modules.vehicles",
             "com.unity.modules.video",
             "com.unity.modules.vr",
@@ -223,78 +306,49 @@ namespace CodeDestroyer.Editor.EditorTools
                 }
             }
         }
-        private static void ResetPackageInitializer()
+        private static void Apply2DUrpChanges()
         {
-            List<string> resetAddList = new List<string>();
-            List<string> resetRemoveList = new List<string>();
 
             for (int i = 0; i < PackageInitializerSave.instance.builtInPackages.Count; i++)
             {
                 Package builtInPackage = PackageInitializerSave.instance.builtInPackages[i];
 
-
-                PackageInfo packageInfo = PackageInfo.FindForPackageName(builtInPackage.packageName);
-                if (!resetBuiltInList.Contains(builtInPackage.packageName) && packageInfo != null && packageInfo.isDirectDependency)
-                {
-                    resetRemoveList.Add(builtInPackage.packageName);
-                }
-
                 builtInPackage.shouldPackageInstalled = false;
             }
 
-            for (int i = 0; i < resetBuiltInList.Count; i++)
+            for (int i = 0; i < _2DUrpList.Count; i++)
             {
-                string resetPackageName = resetBuiltInList[i];
+                string resetPackageName = _2DUrpList[i];
 
                 PackageInfo currentBuiltInPackageInfo = PackageInfo.FindForPackageName(resetPackageName);
-
-
-                if (currentBuiltInPackageInfo == null)
-                {
-                    resetAddList.Add(resetPackageName);
-                }
 
                 Package foundedPackage = PackageInitializerSave.instance.builtInPackages.Find(_package => _package.packageName == resetPackageName);
                 foundedPackage.shouldPackageInstalled = true;
             }
 
-
-            PackageInitializerSave.instance.customPackages.Clear();
-
-            for (int i = 0; i < PackageInitializerSave.instance.assetStorePackages.Count; i++)
-            {
-                Package assetStorePackage = PackageInitializerSave.instance.assetStorePackages[i];
-
-                assetStorePackage.shouldPackageInstalled = false;
-            }
-
             PackageInitializerSave.instance.Save();
 
             builtInPackagesListView.Rebuild();
-            customPackageListView.Rebuild();
-            assetStorePackagesListView.Rebuild();
-
-            if (resetAddList.Count > 0 || resetRemoveList.Count > 0)
-            {
-                string[] finalAddList = resetAddList.ToArray();
-                string[] finalRemoveList = resetRemoveList.ToArray();
-
-                if (finalAddList.Length > 0)
-                {
-                    Debug.Log(GlobalVariables.PackagesInitializerName + " Added Packages: " + string.Join(", ", finalAddList));
-                }
-                if (finalRemoveList.Length > 0)
-                {
-                    Debug.Log(GlobalVariables.PackagesInitializerName + " Removed Packages: " + string.Join(", ", finalRemoveList));
-                }
-
-                
-                resetAddRemoveRequest = Client.AddAndRemove(finalAddList, finalRemoveList);
-                EditorApplication.update += ResetAddRemoveRequest;
-                AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
-            }
         }
+        private static void Apply3DUrpChanges()
+        {
+            for (int i = 0; i < PackageInitializerSave.instance.builtInPackages.Count; i++)
+            {
+                Package builtInPackage = PackageInitializerSave.instance.builtInPackages[i];
+                builtInPackage.shouldPackageInstalled = false;
+            }
 
+            for (int i = 0; i < _3DUrpList.Count; i++)
+            {
+                string resetPackageName = _3DUrpList[i];
+
+                Package foundedPackage = PackageInitializerSave.instance.builtInPackages.Find(_package => _package.packageName == resetPackageName);
+                foundedPackage.shouldPackageInstalled = true;
+            }
+            PackageInitializerSave.instance.Save();
+
+            builtInPackagesListView.Rebuild();
+        }
         private static void ApplyChanges()
         {
             if (PackageInitializerSave.instance != null)
@@ -429,18 +483,37 @@ namespace CodeDestroyer.Editor.EditorTools
                 ListInstalledPackages();
             };
 
-            Button resetButton = new Button();
-            resetButton.text = "Reset Packages";
-            resetButton.style.marginLeft = globalMarginLeftRight;
-            resetButton.style.marginRight = globalMarginLeftRight;
-            resetButton.style.marginBottom = globalMiniBottomMargin;
-            resetButton.clicked += () =>
+
+            VisualElement _2D3DContainer = new VisualElement();
+            _2D3DContainer.style.flexDirection = FlexDirection.Row;
+            _2D3DContainer.style.marginLeft = globalMarginLeftRight;
+            _2D3DContainer.style.marginRight = globalMarginLeftRight;
+            _2D3DContainer.style.marginBottom = globalMiniBottomMargin;
+            Button tick2DPackagesButton = new Button();
+            tick2DPackagesButton.text = "Tick 2D Urp Packages";
+            tick2DPackagesButton.style.marginLeft = globalMarginLeftRight;
+            tick2DPackagesButton.style.marginRight = globalMarginLeftRight;
+            tick2DPackagesButton.style.marginBottom = globalMiniBottomMargin;
+            tick2DPackagesButton.clicked += () =>
             {
-                if (EditorUtility.DisplayDialog("Reset Packages", "This will completely remove all of the updated built-in, git and asset store packages from project", "Apply", "Cancel"))
+                if (EditorUtility.DisplayDialog("Tick 2D Urp Packages", "This will reset every built-in packages and tick all of the default 2d urp packages", "Apply", "Cancel"))
                 {
-                    ResetPackageInitializer();
+                    Apply2DUrpChanges();
                 }
             };
+            Button tick3DPackagesButton = new Button();
+            tick3DPackagesButton.text = "Tick 3D Urp Packages";
+            tick3DPackagesButton.style.marginLeft = globalMarginLeftRight;
+            tick3DPackagesButton.style.marginRight = globalMarginLeftRight;
+            tick3DPackagesButton.style.marginBottom = globalMiniBottomMargin;
+            tick3DPackagesButton.clicked += () =>
+            {
+                if (EditorUtility.DisplayDialog("Tick 3D Urp Packages", "This will reset every built-in packages and tick all of the default 3d urp packages", "Apply", "Cancel"))
+                {
+                    Apply3DUrpChanges();
+                }
+            };
+
 
             Button applyButton = new Button();
             applyButton.text = "Apply";
@@ -462,9 +535,10 @@ namespace CodeDestroyer.Editor.EditorTools
             rootVisualElement.Add(toolLabelAndDisableContainer);
             savePathContainer.Add(savePathLabel);
             savePathContainer.Add(savePathTextField);
+            _2D3DContainer.Add(tick2DPackagesButton);
             WholePackageInitializerContainer.Add(savePathContainer);
             WholePackageInitializerContainer.Add(updateButton);
-            WholePackageInitializerContainer.Add(resetButton);
+            WholePackageInitializerContainer.Add(_2D3DContainer);
             WholePackageInitializerContainer.Add(applyButton);
             WholePackageInitializerContainer.Add(builtInPackageList);
             WholePackageInitializerContainer.Add(customPackageList);
