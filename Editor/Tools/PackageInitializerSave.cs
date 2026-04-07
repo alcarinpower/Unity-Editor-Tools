@@ -15,7 +15,6 @@ namespace CodeDestroyer.Editor.EditorTools
         [SerializeField] internal List<Package> customPackages = new List<Package>();
         [SerializeField] internal List<Package> assetStorePackages = new List<Package>();
 
-
         internal void Save()
         {
             EditorUtility.SetDirty(this);

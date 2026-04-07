@@ -361,13 +361,8 @@ namespace CodeDestroyer.Editor.EditorTools
             {
                 if (!PackageInitializerSave.instance.isPackageInitializerEnabled) return;
 
-                char sepChar = Path.DirectorySeparatorChar;
-                string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
-                string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
-
                 // Run
                 ListInstalledPackages();
-                File.WriteAllText(path, "Saved!");
                 // Run
             }
         }
