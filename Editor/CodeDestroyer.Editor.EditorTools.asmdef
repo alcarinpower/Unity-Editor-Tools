@@ -16,15 +16,7 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "HAS_SPRITE2D"
-    ],
-    "versionDefines": [
-        {
-            "name": "com.unity.2d.sprite",
-            "expression": "1.0.0",
-            "define": "HAS_SPRITE2D"
-        }
-    ],
+    "defineConstraints": [],
+    "versionDefines": [],
     "noEngineReferences": false
 }

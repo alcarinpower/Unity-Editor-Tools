@@ -2,6 +2,7 @@
 using CodeDestroyer.Editor.UIElements;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -48,18 +49,20 @@ namespace CodeDestroyer.Editor.ToolsManager
             // Utilities
             TreeViewItemData<string> utilitiesSetting = new TreeViewItemData<string>(4, GlobalVariables.UtilitiesName);
             // ----------------------
+            List<TreeViewItemData<string>> _2DChildren = new List<TreeViewItemData<string>>();
+            TreeViewItemData<string> _2DSetting = new TreeViewItemData<string>(6, GlobalVariables._2DName, _2DChildren);
+
 
 #if HAS_SPRITE2D
             // 2D
-            List<TreeViewItemData<string>> _2DChildren = new List<TreeViewItemData<string>>();
+
             TreeViewItemData<string> spriteEditor = new TreeViewItemData<string>(5, GlobalVariables.SpriteEditorName);
             _2DChildren.Add(spriteEditor);
 #endif
-            TreeViewItemData<string> _2DSetting = new TreeViewItemData<string>(6, GlobalVariables._2DName, _2DChildren);
+
             // 3D
             List<TreeViewItemData<string>> _3DChildren = new List<TreeViewItemData<string>>();
             TreeViewItemData<string> _3DSetting = new TreeViewItemData<string>(7, GlobalVariables._3DName, _3DChildren);
-
 
             _3DChildren.Add(roughnessConverterSetting);
             toolChildren.Add(_2DSetting);
