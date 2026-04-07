@@ -197,7 +197,7 @@ namespace CodeDestroyer.Editor.EditorTools
         private static List<string> assetStorePackagesSearchlist = new List<string>();
         private static List<string> assetStorePackagesSearchResultList = new List<string>();
         private static ToolbarSearchPanel assetStorePackagesSearchPanel = new ToolbarSearchPanel();
-        
+
         private static ListView builtInPackagesListView;
         private static ListView customPackageListView;
         private static ListView assetStorePackagesListView;
@@ -323,7 +323,10 @@ namespace CodeDestroyer.Editor.EditorTools
                 PackageInfo currentBuiltInPackageInfo = PackageInfo.FindForPackageName(resetPackageName);
 
                 Package foundedPackage = PackageInitializerSave.instance.builtInPackages.Find(_package => _package.packageName == resetPackageName);
-                foundedPackage.shouldPackageInstalled = true;
+                if (foundedPackage != null)
+                {
+                    foundedPackage.shouldPackageInstalled = true;
+                }
             }
 
             PackageInitializerSave.instance.Save();
@@ -343,7 +346,10 @@ namespace CodeDestroyer.Editor.EditorTools
                 string resetPackageName = _3DUrpList[i];
 
                 Package foundedPackage = PackageInitializerSave.instance.builtInPackages.Find(_package => _package.packageName == resetPackageName);
-                foundedPackage.shouldPackageInstalled = true;
+                if (foundedPackage != null)
+                {
+                    foundedPackage.shouldPackageInstalled = true;
+                }
             }
             PackageInitializerSave.instance.Save();
 
@@ -470,7 +476,7 @@ namespace CodeDestroyer.Editor.EditorTools
 
 
 
-           
+
 
 
             Button updateButton = new Button();
@@ -547,7 +553,7 @@ namespace CodeDestroyer.Editor.EditorTools
             rootVisualElement.Add(WholePackageInitializerContainer);
             return rootVisualElement;
         }
-        
+
 
 
         // Built-In Packages
@@ -739,7 +745,7 @@ namespace CodeDestroyer.Editor.EditorTools
                     temporaryCustomPackagesList.Add(package);
                 }
             }
-            
+
             customPackageListView.bindItem = BindCustomPackagesForSearchField;
             customPackageListView.itemsSource = temporaryCustomPackagesList;
             customPackageListView.Rebuild();
@@ -1018,7 +1024,7 @@ namespace CodeDestroyer.Editor.EditorTools
             customListViewHeaderContainer.Add(customPackagesSearchPanel);
         }
         // --------------------------------------------------------------------------------------
-        
+
         // Asset Store Packages
         private static void AssetStorePackagesSearchPanel()
         {
