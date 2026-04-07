@@ -474,31 +474,13 @@ namespace CodeDestroyer.Editor.EditorTools
             assetStorePackageList.style.marginRight = globalMarginLeftRight;
             assetStorePackageList.style.marginBottom = globalMiniBottomMargin;
 
-
-
-
-
-
-            Button updateButton = new Button();
-            updateButton.text = "Update Packages";
-            updateButton.style.marginLeft = globalMarginLeftRight;
-            updateButton.style.marginRight = globalMarginLeftRight;
-            updateButton.style.marginBottom = globalMiniBottomMargin;
-            updateButton.clicked += () =>
-            {
-                ListInstalledPackages();
-            };
-
-
             VisualElement _2D3DContainer = new VisualElement();
             _2D3DContainer.style.flexDirection = FlexDirection.Row;
-            _2D3DContainer.style.marginLeft = globalMarginLeftRight;
-            _2D3DContainer.style.marginRight = globalMarginLeftRight;
             _2D3DContainer.style.marginBottom = globalMiniBottomMargin;
+
             Button tick2DPackagesButton = new Button();
             tick2DPackagesButton.text = "Tick 2D Urp Packages";
             tick2DPackagesButton.style.marginLeft = globalMarginLeftRight;
-            tick2DPackagesButton.style.marginRight = globalMarginLeftRight;
             tick2DPackagesButton.style.marginBottom = globalMiniBottomMargin;
             tick2DPackagesButton.clicked += () =>
             {
@@ -509,8 +491,6 @@ namespace CodeDestroyer.Editor.EditorTools
             };
             Button tick3DPackagesButton = new Button();
             tick3DPackagesButton.text = "Tick 3D Urp Packages";
-            tick3DPackagesButton.style.marginLeft = globalMarginLeftRight;
-            tick3DPackagesButton.style.marginRight = globalMarginLeftRight;
             tick3DPackagesButton.style.marginBottom = globalMiniBottomMargin;
             tick3DPackagesButton.clicked += () =>
             {
@@ -522,10 +502,11 @@ namespace CodeDestroyer.Editor.EditorTools
 
 
             Button applyButton = new Button();
+            applyButton.style.alignSelf = Align.FlexStart;
             applyButton.text = "Apply";
             applyButton.style.marginLeft = globalMarginLeftRight;
-            applyButton.style.marginRight = globalMarginLeftRight;
             applyButton.style.marginBottom = globalMiniBottomMargin;
+            applyButton.style.width = 100f;
             applyButton.clicked += () =>
             {
                 if (EditorUtility.DisplayDialog("Apply Changes", "This will install every selected packages and remove every deselected packages.", "Apply", "Cancel"))
@@ -542,8 +523,8 @@ namespace CodeDestroyer.Editor.EditorTools
             savePathContainer.Add(savePathLabel);
             savePathContainer.Add(savePathTextField);
             _2D3DContainer.Add(tick2DPackagesButton);
+            _2D3DContainer.Add(tick3DPackagesButton);
             WholePackageInitializerContainer.Add(savePathContainer);
-            WholePackageInitializerContainer.Add(updateButton);
             WholePackageInitializerContainer.Add(_2D3DContainer);
             WholePackageInitializerContainer.Add(applyButton);
             WholePackageInitializerContainer.Add(builtInPackageList);
