@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [assembly: InternalsVisibleTo("CodeDestroyer.Editor.EditorTools")]
-namespace CodeDestroyer.Editor.EditorTools
+namespace CodeDestroyer.Editor.SpriteTools
 {
     internal sealed class SpriteEditor
     {
