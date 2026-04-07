@@ -3,9 +3,5 @@
   "version": "1.0.0",
   "displayName": "Editor Tools",
   "description": "This package has various unity editor tools",
-  "unity": "6000.0",
-  "author": {
-    "name": "Compiler Destroyer",
-    "email": "metamorfikd@gmail.com"
-  }
+  "unity": "6000.0"
 }
