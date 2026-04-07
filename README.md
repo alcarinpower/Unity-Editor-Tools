@@ -146,8 +146,6 @@ ToolbarSearchPanel toolbarSearchPanel = new ToolbarSearchPanel(toolbarSearchList
 <h2 align="center">Tools</h2>
 <h3 align="left">1- Package Initializer</h3>
 
-![Uploading image.png…]()
-
 ![Package Initializer](https://github.com/user-attachments/assets/cb20bc40-a015-4131-95e6-2176fd81b8d3.png)
 
 
