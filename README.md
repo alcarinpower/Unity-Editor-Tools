@@ -148,8 +148,8 @@ ToolbarSearchPanel toolbarSearchPanel = new ToolbarSearchPanel(toolbarSearchList
 
 ![Package Initializer](https://github.com/user-attachments/assets/57c7a094-89a2-41cf-88fa-f5ecfb66477b)
 
-<p>Package Initializer will automatically install/remove built-in, git and asset store packages based on the toggles in the settings when editor tools first installed. For safety reasons, Asset Store packages will not be removed.<br>
-After adjusting toggle of packages, settings will be saved to default preferences path. <br>Every first install of Editor Tools will automatically update packages accordingly.<br><br>
+<p>Package Initializer can be used to install/remove built-in, git and asset store packages based on the toggles in the editor tool settings. For safety reasons, Asset Store packages will not be removed.<br>
+After adjusting toggle of packages, settings will be saved to default preferences path. <br>Then apply button can pressed to apply changes.<br><br>
 Package Initializer can be found in the "Tools > Compiler Destroyer > Editor Tools > Tools > Package Initializer"</p>
 
 <br>
