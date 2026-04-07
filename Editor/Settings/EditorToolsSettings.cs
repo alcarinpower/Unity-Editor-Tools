@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 
 #if HAS_SPRITE2D
+using CodeDestroyer.Editor.SpriteTools;
 using UnityEditor.U2D.Sprites;
 #endif
 
