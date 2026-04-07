@@ -5,13 +5,17 @@
         "GUID:2c573e6b271651846a79655161004c5b",
         "GUID:057dcbd5bd74fa849adc5ac79b51f553"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "HAS_SPRITE2D"
+    ],
     "versionDefines": [
         {
             "name": "com.unity.2d.sprite",
