@@ -300,10 +300,7 @@ namespace CodeDestroyer.Editor.EditorTools
             if (PackageInitializerSave.instance != null)
             {
                 if (!PackageInitializerSave.instance.isPackageInitializerEnabled) return;
-            }
 
-            if (PackageInitializerSave.instance != null)
-            {
                 char sepChar = Path.DirectorySeparatorChar;
                 string folder = Path.GetDirectoryName(Application.dataPath) + sepChar + GlobalVariables.DomainName;
                 string path = folder + sepChar + GlobalVariables.PackagesInitializerName + ".flag";
